@@ -1,18 +1,20 @@
 <template name="quiz">
-    <h2>{{question}}</h2>
+  {{#if currentQuestion}} 
+    <h2>{{currentQuestion.text}}</h2>
     <form id="quiz-form">
-      {{#each options}}
+      {{#each currentQuestion.options}}
         <div>
           <input type="radio" name="answer" value="{{this}}"> {{this}}
         </div>
       {{/each}}
       <button type="button" id="submit-btn">Submit</button>
     </form>
-    <div>
-      <h3>Doğru Cevap Sayısı: <span class="correct-answers">{{correctAnswers}}</span></h3>
-      <h3>Yanlış Cevap Sayısı: <span class="wrong-answers">{{wrongAnswers}}</span></h3>
-    </div>
+  {{else}}
+    <p>Tebrikler! Quiz tamamlandı.</p>
+  {{/if}}
   
-  
-
-  </template>
+  <div>
+    <h3>Doğru Cevap Sayısı: <span class="correct-answers">{{correctAnswers}}</span></h3>
+    <h3>Yanlış Cevap Sayısı: <span class="wrong-answers">{{wrongAnswers}}</span></h3>
+  </div>
+</template>
